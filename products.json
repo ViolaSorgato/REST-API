@@ -1,23 +1,26 @@
 [
-    {
-        "title": "iPhone X",
-        "description": "Last years phone from Apple with a beautiful all display front.",
-        "id": "0372947",
-        "price": "11495 kr"
-    },{
-        "title": "One Plus 5",
-        "description": "Sleek and powerful smartphone from One Plus.",
-        "id": "1627301",
-        "price": "4995 kr"
-    },{
-        "title": "Galaxy S8",
-        "description": "Really cool edge to edge smartphone from Samsung.",
-        "id": "0598944",
-        "price": "7990 kr"
-    },{
-        "title": "LG V30",
-        "description": "Super nice and beautiful smartphone from LG.",
-        "id": "1852738",
-        "price": "7495 kr"
-    }
+  {
+    "title": "iPhone X",
+    "description": "Last years phone from Apple with a beautiful all display front.",
+    "id": "0372947",
+    "price": "11495 kr"
+  },
+  {
+    "title": "One Plus 5",
+    "description": "Sleek and powerful smartphone from One Plus.",
+    "id": "1627301",
+    "price": "4995 kr"
+  },
+  {
+    "title": "Galaxy S8",
+    "description": "Really cool edge to edge smartphone from Samsung.",
+    "id": "0598944",
+    "price": "7990 kr"
+  },
+  {
+    "title": "LG V30",
+    "description": "Super nice and beautiful smartphone from LG.",
+    "id": "1852738",
+    "price": "7495 kr"
+  }
 ]
