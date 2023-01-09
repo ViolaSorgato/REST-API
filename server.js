@@ -1,12 +1,26 @@
 const express = require('express');
 const app = express();
+const bodyParser = require('body-parser');
 const fs = require('fs');
 const port = 1337
 
+let products = require("./products.json");
 app.use(express.json());
 
-//app.get('/', (req,res) => res.send('Hello World!'))
+//save function
+const save = () => {
+    fs.writeFile(
+      "./products.json",
+      JSON.stringify(products, null, 2),
+      (error) => {
+        if (error) {
+          throw error;
+        }
+      }
+    );
+  };
 
+//GET - READ
 app.get('/', function(req,res,next) {
     
     fs.readFile("products.json", function(err,data) {
@@ -20,77 +34,44 @@ app.get('/', function(req,res,next) {
     })
 });
 
-// app.get('/api/products', (req, res) => {
-//     res.status(200).send("här är alla produkter");
-// });
+//POST - CREATE
+app.post("/products", bodyParser.json(), (req, res) => {
+    products.push(req.body);
+    save();
+    res.json({
+      status: "success",
+      productInfo: req.body,
+    });
+  });
 
-// app.post('/api/products', (req, res) => {
-//     res.status(201).json(req.body);
-// })         //writeFile???
-
-// //Jannes video del 2, readFile + writeFile + push new element
-
-// app.get('/add', (req, res) => {
-
-//     fs.readFile("products.json", function(err, data){
-//         if(err) {
+// //PUT 
+// app.put("/products", bodyParser.json(), (req, res) => {
+    
+//     fs.readFile("products.json", function(err,data) {
+//         if (err) {
 //             console.log(err);
 //         }
-
-//         const products = JSON.parse(data)
-
-//         let newProduct = {"title": "iPhone 11", "description": "It's a phone.","id": "3587498", "price": "15000 kr"};
-
-//         products.push(newProduct);
-
-//         fs.writeFile("products.json", JSON.stringify(products), function(err){
-//             if(err) {
-//                 console.log(err);
-//             }
-//         });
-//         res.send(products)
-//         return;
+    
+//     save();
+//     res.json({
+//         status: "success",
+//         productInfo: req.body,
 //     });
-// })
+// });
+// });
 
-// let newProduct =
-// {
-//     title: "iPhone 11", 
-//     description: "It's a phone.",
-//     id: "3587498",
-//     price: "15000 kr"
-// }
-
-// //Jannes Video
-
-// fetch('http://localhost:1337/api/products/newproduct', {
-//     method: 'POST',
-//     headers: {
-//         'Content-Type': 'application.json'
-//     },
-//     body: JSON.stringify(newProduct)
-// })
-// .then(res => res.json())
-// .then(res => console.log(res));
-
-// //Fredriks video
-
-// const postData = async () => {
-//     const response = await fetch('/products.json', {  //ska det vara json fil här?
-//         method: "POST",
-//         headers: {
-//             'Content-Type': 'application.json'
-//         },
-//         body: JSON.stringify(newProduct)
-//     });
-
-//     const data = await response.json();
-//     console.log(data);
-// }
-
-
-// app.put //???
-
-// app.delete //???
+DELETE
+app.delete("/products/:id", (req, res) => {
+    fs.readFile("products.json", function(err,data) {
+        if (err) {
+            console.log(err);
+        }
+    const products = JSON.parse(data)
+    products.pop();
+    console.log(products);
+    res.send(products)
+    return;
+    })
+});
 
 app.listen(port, () => console.log(`Servern är igång på http://localhost:${port}`));
