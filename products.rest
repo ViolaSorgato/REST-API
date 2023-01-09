@@ -7,15 +7,22 @@ Content-Type: application/json
 
 {
     "title": "iPhone 11", 
-     "description": "It's a phone.",
-     "id": "3587498",
-     "price": "15000 kr"
+    "description": "It's a phone.",
+    "id": "3587498",
+    "price": "15000 kr"
 }
 
 ###
 
 PUT http://localhost:1337/products
+Content-Type: application/json
 
+{
+    "title": "New phone", 
+    "description": "Yup. It's a phone.",
+    "id": "1111111",
+    "price": "Many kr"
+}
 ###
 
 DELETE http://localhost:1337/products/:price

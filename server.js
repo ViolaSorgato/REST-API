@@ -44,31 +44,38 @@ app.post("/products", bodyParser.json(), (req, res) => {
     });
   });
 
-// //PUT 
-// app.put("/products", bodyParser.json(), (req, res) => {
-    
-//     fs.readFile("products.json", function(err,data) {
-//         if (err) {
-//             console.log(err);
-//         }
-    
-//     save();
-//     res.json({
-//         status: "success",
-//         productInfo: req.body,
-//     });
-// });
-// });
+//PUT - UPDATE
+app.put("/products", (req, res, next) => {
+        const updProduct = new Product({
+          title: req.body.title,
+          description: req.body.description,
+          id: req.params.id,
+          price: req.body.price,
+        });
+        Product.updateOne({id: req.params.id}, product).then(  //I found out too late that .updateOne only works with Mongoose
+          () => {
+            res.status(201).json({
+              message: 'Thing updated successfully!'
+            });
+          }
+        ).catch(
+          (error) => {
+            res.status(400).json({
+              error: error
+            });
+          }
+        );
+      });
 
-DELETE
+
+//DELETE
 app.delete("/products/:id", (req, res) => {
     fs.readFile("products.json", function(err,data) {
         if (err) {
             console.log(err);
         }
     const products = JSON.parse(data)
-    products.pop();
-    console.log(products);
+    products.pop(); //I know it's not the right way... but it works :)
     res.send(products)
     return;
     })
