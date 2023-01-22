@@ -1,0 +1,31 @@
+GET http://localhost:1337/
+
+###
+
+POST http://localhost:1337/products
+Content-Type: application/json
+
+{
+    "title": "iPhone 11", 
+    "description": "It's a phone.",
+    "id": "3587498",
+    "price": "15000 kr"
+}
+
+###
+
+PUT http://localhost:1337/products/1627301
+Content-Type: application/json
+
+{
+"id": "1627301",
+    "title": "Updated Iphone",
+    "description": "This is an updated model",
+    "price": "9600 kr"
+}
+
+###
+
+DELETE http://localhost:1337/products/0372947
+
+###
