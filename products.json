@@ -1,15 +1,9 @@
 [
   {
-    "title": "iPhone X",
-    "description": "Last years phone from Apple with a beautiful all display front.",
-    "id": "0372947",
-    "price": "11495 kr"
-  },
-  {
-    "title": "One Plus 5",
-    "description": "Sleek and powerful smartphone from One Plus.",
     "id": "1627301",
-    "price": "4995 kr"
+    "title": "Updated Iphone",
+    "description": "This is an updated model",
+    "price": "9600 kr"
   },
   {
     "title": "Galaxy S8",
@@ -22,5 +16,11 @@
     "description": "Super nice and beautiful smartphone from LG.",
     "id": "1852738",
     "price": "7495 kr"
+  },
+  {
+    "title": "iPhone 11",
+    "description": "It's a phone.",
+    "id": "3587498",
+    "price": "15000 kr"
   }
 ]

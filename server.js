@@ -62,36 +62,14 @@ app.put("/products/:id", bodyParser.json(), (req, res) => {
 });
 
 //DELETE
-// app.delete("/products/:id", bodyParser.json(), (req, res) => {
-//   products = products.filter((product) => product.id !== req.params.id);
-//   save();
-//   res.json({
-//     status: "success",
-//     removed: req.params.id,
-//     newLength: products.length,
-//   });
-// });
-
-app.delete("/:id", (req, res) => {
-  fs.readFile("products.json", function (err, data){
-
-    if(err){
-        return res.status(404).json("Error")
-    }
-
-let products = JSON.parse(data);
-
-const { id } = req.params;
-
-const product = products.find((product) => product.id === id);
-
-products = products.filter((product) => product.id !== id);
-
-save();
-
-res.json(`Success! The product has been deleted.`);
-    
-});
+app.delete("/products/:id", (req, res) => {
+  products = products.filter((product) => product.id !== req.params.id);
+  save();
+  res.json({
+    status: "success",
+    removed: req.params.id,
+    newLength: products.length,
+  });
 });
 
 app.listen(port, () => console.log(`Servern är igång på http://localhost:${port}`));
